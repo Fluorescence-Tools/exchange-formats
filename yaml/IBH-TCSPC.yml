@@ -1,0 +1,259 @@
+# In this file all relevant reference measurements, instrument settings for a sample are listed.
+# All measured relevant measurements are listed in the "measurements" section. 
+
+# The sample of interest is refers to a measurement by its ID. 
+# The "Name" is only for better human readability of the file
+Sample:
+# Here the sample name is given
+    Name: T4 Lysozyme R8pAcF Q69C
+# This is the name of the sample in the Measurement list
+    Measurement ID: R8pAcF Q69C-DA
+
+# In the calibration list, essential calibration parameters can be listed. These
+# calibration parameters should be derived from the measurements listed below.
+# These parameters are directly related to the detector IDs
+
+Calibration parameters:
+    Setup ID: IBH TCSPC
+    Instrument response function:
+        Measurement ID: IRF_DA
+    Linearization:
+        Measurement ID: Linearization_DA
+    Instrument response function:
+        Measurement ID: IRF_D0
+    Linearization:
+        Measurement ID: Linearization_D0
+            
+# This is a list of all measurements that were used to process the sample. This list 
+# refers to the files and has a short human readable description of the sample. 
+# Measurements may have been performed on different experimental setups using different
+# file formats.
+
+Measurement datasets:
+    R8pAcF Q69C-DA:
+        Setup ID: IBH TCSPC
+        Description: >
+            PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C-Alexa647, 50 uL sample in cuvette (Hellma).
+        Data:
+            Filepath: ./8-69_DA.txt
+            Format: channel number - photon count
+    # IBH: channel number - photon count,
+    # Picoquant: time - photon count
+        Linearization table: Linearization_DA.txt
+
+    R8AcF Q69C Donor:
+        Setup ID: IBH TCSPC
+        description: > 
+            PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C, 50 uL sample in cuvette (Hellma).
+        Data:
+            Filepath: ./8-69_D0.txt
+            Format: channel number - photon count 
+        Linearization table: Linearization_D0.txt
+
+    IRF-DA:
+        Setup ID: IBH TCSPC
+        description: > 
+            500 uL of Ludox diluted in water to gain a scattering solution.
+        Data:
+            Filepath: ./IRF_DA.txt
+            File format: channel number - photon count
+
+    IRF-D0:
+        Setup ID: IBH TCSPC
+        description: > 
+            500 uL of Ludox diluted in water to gain a scattering solution.
+        Data:
+            Filepath: ./IRF_D0.txt
+            Format: channel number - photon count
+        
+    Linearization-DA:
+        Setup ID: IBH TCSPC
+        description: > 
+            Roomlight (uncorrelated lightsource) used to generate linearization table.
+        Data:
+            Filepath: ./Linearization.txt
+            Format: channel number - photon count
+
+    Linearization-D0:
+        Setup ID: IBH TCSPC
+        description: > 
+            Roomlight (uncorrelated lightsource) used to generate linearization table.
+        Data:
+            Filepath: ./Linearization_D0.txt
+            Format: channel number - photon count    
+
+# In the setup parts list, optical parts, electronics, and light sources are listed. In 
+# this list more parts can be listed than the parts that are actually used in a setup.
+# The actual setup is assembled by combining elements from the "setup parts" in the 
+# "setup" section.
+
+Setup parts:
+
+# Here all optical elements are listed. The number of the optical element is
+# referred to when the "light path" is defined for a detector. Optical parts have
+# "inputs" and "outputs". The outputs are listed and can be associated to a 
+# spectrum, the outputs have names that are later used to refer to an output of an 
+# optical element.
+    
+    Optical parts:
+        0:    
+            Name: Rotatable polarizer
+            Type: polarizer
+            Description: >
+                Polarizer to cleanup the the polarization of the excitation source
+            Manufacturer: IBH
+            Inputs: laser light
+            Outputs: 0
+            # Angle relative to the laboratory frame (54.7 degrees is magic angle)
+        1:
+            Name: EXCITATION_MONO.MCR
+            Type: Monochromator
+            Description: Monochromator used in front of cuvette
+            Manufacturer: IBH
+            Inputs: fluorescence filtered polarisator
+            Outputs:
+                Transmitted: 
+                    Center wavelength: 485
+                    Bandwidth: 2
+            Spectrum file: None
+        2:    
+            Name: OD filter
+            Type: Filter
+            Manufacturer: Chroma
+            Description: Filter used in front of detector
+            Inputs: fluorescence emitted from sample in cuvette
+            Outputs:
+                Transmitted:
+                    Center wavelength: null
+                    Bandwidth: null
+                Spectrum file: None
+        3:
+            Name: ET520/32
+            Type: Filter
+            Description: Filter used in front of detector
+            Manufacturer: Chroma
+            Inputs: fluorescence emitted from sample in cuvette
+            Outputs:
+                Transmitted: 
+                    Center wavelength: 520
+                    Bandwidth: 32
+            Spectrum file: None
+        4:    
+            Name: Rotatable polarizer
+            Type: polarizer
+            Description: >
+                Polarizer to select the polarization of the emitted signal
+            Manufacturer: IBH
+            Inputs: fluorescence emitted from sample in cuvette
+            Outputs: 54.7
+            # Angle relative to the laboratory frame (54.7 degrees is magic angle)
+        5:
+            Name: DETECTION_MONO.MCR
+            Type: Monochromator
+            Description: Monochromator used in front of detector
+            Manufacturer: IBH
+            Inputs: fluorescence filtered by ET520/32, OD filter and polarizer
+            Outputs:
+                Transmitted: 
+                    Center wavelength: 520
+                    Bandwidth: 16
+            Spectrum file: None
+
+    Excitation sources:
+        0:
+            Excitation source manufacturer: none
+            Excitation source name: room light
+            Excitation source repetition rate: 0 MHz
+            Excitation source wavelength: none
+            Excitation source spectrum: null
+        1:
+            Excitation source manufacturer: PicoQuant, Germany    
+            Excitation source name: LDH-PC470 (Picoquant GmbH, Germany)
+            Excitation source repetition rate: 10 MHz
+            Excitation source wavelength: 470 nm
+            Excitation source spectrum: null
+
+    Counting electronics:
+        0:
+            Counting electronics manufacturer: HORIBA Jobin Yvon IBH Ltd., UK
+            Counting electronics name: Datastation Hub
+            Counting electronics dead time: null
+            Counting electronics channel width: 0.0141
+            Counting electronics UUID: da6e0769-8f3e-40d1-9d0f-bd2b5aeb1383
+
+    Detectors:
+        0:
+            Part type: PMT Detector
+            Part manufacturer: HORIBA Jobin Yvon IBH Ltd., UK
+            Part manufacturer date: null
+            Part name: TBX-04
+            Part serial number: null
+
+# In the setup section, the actual used setup is assembled. 
+Setup:
+# Minimal description
+    IBH TCSPC - VM:
+        Description: > 
+            The measurements were performed on an IBH 5000 (IBH, Scotland) eTCSPC using a PQ PDL (LDH-P-C470) for excitation at 10 MHz. 
+            IRF was recorded detecting the light scattered by a ludox suspension at the wavelength of the laser. 
+            The laser was attenuated using a OD filter to an intensity comparable to the intensity of the sample.
+            The excitation and emission slits were set to 2 nm and 16 nm, respectively.
+        
+# Extended description
+    IBH TCSPC - IRF:
+        Excitation sources ID: [1]
+        Detectors:
+            Name: PMT Detector
+            Detector ID: [0]
+            Excitation light path: >
+                0[Parallel] # polarization selection
+                1[Transmitted] # monochromator
+            Detection light path: >
+                2[Transmitted] # attenuator
+                3[Transmitted] # filter
+                4[Magic Angle] # polarization selection
+                5[Transmitted] # emission wavelength selection
+            Detection center wavelength [nm]: 485
+            Counting electronics:
+                Name: Datastation Hub
+                Counting electronics ID: [0]
+                Resolution [ps]: 14.1
+
+    IBH TCSPC - Linearization:
+        Excitation sources ID: [0]
+        Detectors:
+            Name: PMT Detector
+            Detector ID: [0]
+            Excitation light path: >
+                0[Parallel] # polarization selection
+                1[Transmitted] # monochromator
+            Detection light path: >
+                2[Transmitted] # attenuator
+                3[Transmitted] # filter
+                4[Magic Angle] # polarization selection
+                5[Transmitted] # emission wavelength selection
+            Detection center wavelength [nm]: 485
+            Counting electronics:
+                Name: Datastation Hub
+                Counting electronics ID: [0]
+                Resolution [ps]: 14.1
+
+    IBH TCSPC - Donor:
+        Excitation sources ID: [1]
+        Detectors:
+            Name: PMT Detector
+            Detector ID: [0]
+            Excitation light path: >
+                0[Parallel] # polarization selection
+                1[Transmitted] # monochromator
+            Detection light path: >
+                2[Transmitted] # attenuator
+                3[Transmitted] # filter
+                4[Magic Angle] # polarization selection
+                5[Transmitted] # emission wavelength selection
+            Detection center wavelength [nm]: 520
+            Counting electronics:
+                Name: Datastation Hub
+                Counting electronics ID: [0]
+                Resolution [ps]: 14.1
+
