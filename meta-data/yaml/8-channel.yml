@@ -1,17 +1,6 @@
-# In this file all relevant reference measurements, instrument settings for a sample are listed.
-# All measured relevant measurements are listed in the "measurements" section. 
-
-# The sample of interest is refers to a measurement by its ID. 
-# The "Name" is only for better human readability of the file
 Sample:
-# Here the sample name is given
     Name: T4 Lysozyme R8pAcF N132C
-# This is the name of the sample in the Measurement list
     Measurement ID: R8pAcF N132C
-
-# In the calibration list, essential calibration parameters can be listed. These
-# calibration parameters should be derived from the measurements listed below.
-# These parameters are directly related to the detector IDs
 Calibration parameters:
     Setup ID: 8-channel
     Instrument response function:
@@ -43,10 +32,6 @@ Calibration parameters:
             Value: 0.9
             Measurement ID: Rhodamin 101
 
-# This is a list of all measurements that were used to process the sample. This list 
-# refers to the files and has a short human readable description of the sample. 
-# Measurements may have been performed on different experimental setups using different
-# file formats.
 Measurement datasets:
     R8pAcF N132C:
         Setup ID: 8-channel
@@ -89,27 +74,14 @@ Measurement datasets:
     DNAmix:
         Setup ID: 8-channel
         description: > 
-            50 uL DNAmix diluted in water on objective slide, mixture of DNA strands with single-labeled strands, a donor-acceptor distance 
-            of XX bp and of YY bp 
+            50 uL DNAmix diluted in water on objective slide, mixture of DNA strands with single-labeled strands, 
+            a donor-acceptor distance of 9 bp and of 15 bp.
+            The donor flourophore is Alexa488, the acceptor fluorophore Cy5.
         Data:    
             Filepath: ./DNA/*.ht3
             Format: ht3-suren 
 
-# In the setup parts list, optical parts, electronics, and light sources are listed. In 
-# this list more parts can be listed than the parts that are actually used in a setup.
-# The actual setup is assembled by combining elements from the "setup parts" in the 
-# "setup" section.
 Setup parts:
-
-# Here all optical elements are listed. The number of the optical element is
-# referred to when the "light path" is defined for a detector. Optical parts have
-# "inputs" and "outputs". The outputs are listed and can be associated to a 
-# spectrum, the outputs have names that are later used to refer to an output of an 
-# optical element.
-
-# Not sure how multiple inputs and outputs can be handled, e.g., a 
-# polarizing beam splitter has one "input" and two "outputs"
-
     Optical parts:
         11:    
             Name: Excitation polarizing beam splitter
@@ -256,7 +228,7 @@ Setup parts:
             Counting electronics manufacturer: PicoQuant, Germany
             Counting electronics name: HydraHarp
             Counting electronics dead time: null
-            Counting electronics channel width: 0.008
+            Counting electronics channel width: 0.004
             Counting electronics UUID: da6e0769-8f3e-40d1-9d0f-bd2b5aeb1383
 
     Detectors:
@@ -285,7 +257,6 @@ Setup parts:
             Detector name: SPCM AQR 15
             Detector serial number: 15130
             Detector type: APD
-            Detector dead time: null
         6: # 8-channel
             Part type: Detector
             Detector manufacturer: PicoQuant, Germany
@@ -293,7 +264,6 @@ Setup parts:
             Detector name: tauSPAD
             Detector serial number: 01016062
             Detector type: APD
-            Detector dead time: null
         7: # 8-channel
             Part type: Detector
             Detector manufacturer: PicoQuant, Germany
@@ -301,7 +271,6 @@ Setup parts:
             Detector name: tauSPAD
             Detector serial number: 01016061
             Detector type: APD
-            Detector dead time: null
         8: # 8-channel
             Part type: Detector
             Detector manufacturer: PicoQuant, Germany
@@ -309,17 +278,14 @@ Setup parts:
             Detector name: tauSPAD
             Detector serial number: 01019818
             Detector type: APD
-            Detector dead time: null
         9: # 8-channel
             Part type: Detector
-            Part manufacturer: PicoQuant, Germany
-            Part manufacturer date: February 2012
-            Part name: tauSPAD
-            Part serial number: 01017532
-            Part type: APD
-            Part dead time: null
+            Detector manufacturer: PicoQuant, Germany
+            Detector manufacturer date: February 2012
+            Detector name: tauSPAD
+            Detector serial number: 01017532
+            Detector type: APD
 
-# In the setup section, the actual used setup is assembled. 
 Setups:
 # Minimal description
     8-channel setup:
