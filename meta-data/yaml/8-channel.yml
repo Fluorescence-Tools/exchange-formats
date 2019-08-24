@@ -91,9 +91,7 @@ Setup parts:
             Manufacturer: Thorlabs
             Outputs:
                 Parallel: transmitted
-                Spectrum file: None
                 Perpendicular: reflected
-                Spectrum file: None
         12:    
             Name: Excitation dichroic
             Type: Dichroic mirror
@@ -102,9 +100,7 @@ Setup parts:
             Manufacturer: Chroma
             Outputs: # The outputs can be simply names or numbers
                 Reflected: incoming laser light
-                Spectrum file: None
                 Transmitted: red-shifted fluorescence emitted from sample
-                Spectrum file: None
         13:    
             Name: Detection polarizing beam splitter
             Type: Polarizing beamsplitter
@@ -113,9 +109,7 @@ Setup parts:
             Manufacturer: Thorlabs
             Outputs:
                 Parallel: 
-                Spectrum file: None
                 Perpendicular: 
-                Spectrum file: None
         14:    
             Name: Parallel dichroic mirror
             Type: Dichroic mirror
@@ -125,9 +119,7 @@ Setup parts:
             Inputs: parallel polarized emission
             Outputs:
                 Reflected: green fluorescence
-                Spectrum file: None
                 Transmitted: red fluorescence
-                Spectrum file: None
         15:    
             Name: Perpendicular dichroic mirror
             Type: Dichroic mirror
@@ -137,9 +129,7 @@ Setup parts:
             Inputs: perpendicular polarized emission
             Outputs:
                 Reflected: green fluorescence
-                Spectrum file: None
                 Transmitted: green fluorescence
-                Spectrum file: None
         16:    
             Name: beam splitter I
             Type: 50/50 beam splitter
@@ -149,9 +139,7 @@ Setup parts:
             Inputs: parallel polarized green emission
             Outputs:
                 Reflected: green fluorescent light
-                Spectrum file: None
                 Transmitted: green fluorescent light
-                Spectrum file: None
         17:    
             Name: beam splitter II
             Type: 50/50 beam splitter
@@ -161,9 +149,7 @@ Setup parts:
             Inputs: parallel polarized red emission
             Outputs:
                 Reflected: red fluorescent light
-                Spectrum file: None
                 Transmitted: red fluorescent light
-                Spectrum file: None
         18:    
             Name: beam splitter III
             Type: 50/50 beam splitter
@@ -173,9 +159,7 @@ Setup parts:
             Inputs: perpendicular polarized green emission
             Outputs:
                 Reflected: green fluorescent light
-                Spectrum file: None
                 Transmitted: green fluorescent light
-                Spectrum file: None
         19:    
             Name: beam splitter IV
             Type: 50/50 beam splitter
@@ -185,9 +169,7 @@ Setup parts:
             Inputs: perpendicular polarized red emission
             Outputs:
                 Reflected: red fluorescent light
-                Spectrum file: None
                 Transmitted: red fluorescent light
-                Spectrum file: None
         20:
             Name: ET520/32
             Type: Filter
@@ -197,7 +179,6 @@ Setup parts:
                 Transmitted: 
                     Center wavelength: 520
                     Bandwidth: 32
-                Spectrum file: None
         21:    
             Name: ET720/150
             Type: Filter
@@ -207,7 +188,6 @@ Setup parts:
                 Transmitted:
                     Center wavelength: 720
                     Bandwidth: 150
-                Spectrum file: None
 
     Excitation sources:
         3: # 8-channel green
@@ -215,19 +195,16 @@ Setup parts:
             Excitation source name: BDL-SMN 485 nm
             Excitation source repetition rate: 64 MHz
             Excitation source wavelength: 485 nm
-            Excitation source spectrum: null
         4: # 8-channel red for PIE
             Excitation source manufacturer: PicoQuant, Germany
             Excitation source name: BDL-SMN 640 nm
             Excitation source repetition rate: 64 MHz
             Excitation source wavelength: 640 nm
-            Excitation source spectrum: null
 
     Counting electronics:
         2: # 8-channel
             Counting electronics manufacturer: PicoQuant, Germany
             Counting electronics name: HydraHarp
-            Counting electronics dead time: null
             Counting electronics channel width: 0.004
             Counting electronics UUID: da6e0769-8f3e-40d1-9d0f-bd2b5aeb1383
 
