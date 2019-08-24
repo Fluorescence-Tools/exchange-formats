@@ -21,7 +21,6 @@ Measurement datasets:
             Measurement ID: IRF_DA
         Linearization:
             Measurement ID: Linearization_DA
-            Linearization table: Linearization_DA.txt
         Description: >
             PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C-Alexa647, 50 uL sample in cuvette (Hellma).
         Data:
@@ -33,7 +32,6 @@ Measurement datasets:
             Measurement ID: IRF_D0
         Linearization:
             Measurement ID: Linearization_D0
-            Linearization table: Linearization_D0.txt
         Description: >
             PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C, 50 uL sample in cuvette (Hellma).
         Data:
@@ -58,7 +56,7 @@ Measurement datasets:
         Description: >
             Roomlight (uncorrelated lightsource) used to generate linearization table.
         Data:
-            Filename: ./Linearization.txt
+            Filename: ./Linearization_DA.txt
 
     Linearization-D0:
         Setup ID: IBH TCSPC
