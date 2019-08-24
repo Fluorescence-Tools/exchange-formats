@@ -25,8 +25,7 @@ Measurement datasets:
         Description: >
             PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C-Alexa647, 50 uL sample in cuvette (Hellma).
         Data:
-            Filepath: ./8-69_DA.txt
-            Format: channel number - photon count
+            Filename: ./8-69_DA.txt
 
     R8AcF Q69C Donor:
         Setup ID: IBH TCSPC
@@ -38,40 +37,35 @@ Measurement datasets:
         Description: >
             PBS pH 7.5,~20 nM R8pAcF-Alexa488 Q69C, 50 uL sample in cuvette (Hellma).
         Data:
-            Filepath: ./8-69_D0.txt
-            Format: channel number - photon count 
+            Filename: ./8-69_D0.txt
 
     IRF-DA:
         Setup ID: IBH TCSPC
         Description: >
             500 uL of Ludox diluted in water to gain a scattering solution.
         Data:
-            Filepath: ./IRF_DA.txt
-            File format: channel number - photon count
+            Filename: ./IRF_DA.txt
 
     IRF-D0:
         Setup ID: IBH TCSPC
         description: > 
             500 uL of Ludox diluted in water to gain a scattering solution.
         Data:
-            Filepath: ./IRF_D0.txt
-            Format: channel number - photon count
-        
+            Filename: ./IRF_D0.txt
+
     Linearization-DA:
         Setup ID: IBH TCSPC
         Description: >
             Roomlight (uncorrelated lightsource) used to generate linearization table.
         Data:
-            Filepath: ./Linearization.txt
-            Format: channel number - photon count
+            Filename: ./Linearization.txt
 
     Linearization-D0:
         Setup ID: IBH TCSPC
         description: > 
             Roomlight (uncorrelated lightsource) used to generate linearization table.
         Data:
-            Filepath: ./Linearization_D0.txt
-            Format: channel number - photon count    
+            Filename: ./Linearization_D0.txt
 
 # In the setup parts list, optical parts, electronics, and light sources are listed. In 
 # this list more parts can be listed than the parts that are actually used in a setup.
@@ -179,47 +173,50 @@ Setup parts:
             Part serial number: null
 
 # In the setup section, the actual used setup is assembled. 
-Measurement settings:
+Setup:
+    Setup name: IBH TCSPC
+    Description: >
+        The measurements were performed on an IBH 5000 (IBH, Scotland) eTCSPC using a PQ PDL (LDH-P-C470)
+        for excitation at 10 MHz. IRF was recorded detecting the light scattered by a ludox suspension at
+        the wavelength of the laser. The laser was attenuated using a OD filter to an intensity comparable
+        to the intensity of the sample. The excitation and emission slits were set to 2 nm and 16 nm,
+        respectively.
+    Setup part IDs: [0, 1, 2, 3, 4, 5]
+    Excitation sources ID: [1]
+    Counting electronics:
+        Name: Datastation Hub
+        Counting electronics ID: [0]
+        Resolution [ps]: 14.1
+    Detectors:
+        0:
+            Detector ID: 0
+            Excitation light path:
+                - Optical part ID: 0  # excitation polarizer
+                  Setting: Parallel
+                - Optical part ID: 1
+                  Setting: Transmitted # monochromator
+            Detection light path: >
+                - 2[Transmitted] # attenuator
+                - 3[Transmitted] # filter
+                - 4[Magic Angle] # polarization selection
+                - 5[Transmitted] # emission wavelength selection
+
+Setup settings:
     # Minimal description
     0: &IBHTCSPC
         Setup name: IBH TCSPC
-        Description: > 
-            The measurements were performed on an IBH 5000 (IBH, Scotland) eTCSPC using a PQ PDL (LDH-P-C470)
-            for excitation at 10 MHz. IRF was recorded detecting the light scattered by a ludox suspension at
-            the wavelength of the laser. The laser was attenuated using a OD filter to an intensity comparable
-            to the intensity of the sample. The excitation and emission slits were set to 2 nm and 16 nm,
-            respectively.
-        Setup part IDs: [0, 1, 2, 3, 4, 5]
-        Excitation sources ID: [1]
-        Counting electronics:
-            Name: Datastation Hub
-            Counting electronics ID: [0]
-            Resolution [ps]: 14.1
-        Detectors:
-            0:
-                Name: PMT Detector
-                Excitation light path:
-                    - Optical part ID: 0  # excitation polarizer
-                      Setting: Parallel
-                    - Optical part ID: 1
-                      Setting: Transmitted # monochromator
-                Detection light path: >
-                    - 2[Transmitted] # attenuator
-                    - 3[Transmitted] # filter
-                    - 4[Magic Angle] # polarization selection
-                    - 5[Transmitted] # emission wavelength selection
     1: *IBHTCSPC
-        Setup name: IBH TCSPC VM
+        Setting name: Donor
         Detectors:
             0:
                 Detection center wavelength [nm]: 520
     2: *IBHTCSPC
-        Setup name: IBH TCSPC - IRF
+        Setting name: IRF
         Detectors:
             0:
                 Detection center wavelength [nm]: 485
     3: *IBHTCSPC
-        Setup name: IBH TCSPC - Linearization
+        Setting name: Linearization
         Excitation sources ID: [0]
         Detectors:
             0:
