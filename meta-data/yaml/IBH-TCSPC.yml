@@ -118,11 +118,30 @@ Setup parts:
 Setup:
     Setup name: IBH TCSPC
     Description: >
-        The measurements were performed on an IBH 5000 (IBH, Scotland) eTCSPC using a PQ PDL (LDH-P-C470)
-        for excitation at 10 MHz. IRF was recorded detecting the light scattered by a ludox suspension at
-        the wavelength of the laser. The laser was attenuated using a OD filter to an intensity comparable
-        to the intensity of the sample. The excitation and emission slits were set to 2 nm and 16 nm,
-        respectively.
+        Ensemble Time Correlated Single Photon Counting (eTCSPC) measurements were performed using either 
+        an IBH-5000U (IBH, Scotland) or a Fluotime 200 (Picoquant, Germany) system. 
+        The excitation source of the IBH machine were a 470 nm diode laser (LDH-P-C470, Picoquant, Germany) 
+        operating at 10 MHz for donor excitation. The excitation and emission slits were set to 2 nm and 16 nm,
+        respectively. The excitation source of the Fluotime200 system was a white light laser (SuperK extreme, 
+        NKT Photonics, Denmark) operating at 20 MHz at 485 nm excitation and emission slits set to 2 nm and 5 nm,
+        respectively. Additionally, in both systems, cut-off filters were used to reduce the amount of scattered 
+        light (>500 nm for donor emission). For green detection, the monochromator was set to 520 nm. 
+        All measurements were conducted under magic angle conditions (excitation polarizer 0 degree, emission polarizer 
+        54.7 degree).
+        In the IBH system, the TAC-histograms were recorded with a bin width of 14.1 ps within a time window of 57.8 ns,
+        while the Fluotime200 was set to a bin width of 8 ps within a time window of 51.3 ns. Photons were collected 
+        up to a peak count of 100’000 corresponding in average to a total number of 30*10^6 photons. The instrument 
+        response function IRF (~230 ps FWHM for the IBH, ~ 150 ps for the Fluotime200) was collected under the same 
+        recording settings at the excitation wavelength of the sample without cutoff-filters using a scattering 
+        Ludox-dispersion, which yielded a comparable count rate as the later on measured samples.
+        For the IBH system, it was needed was performed before each measurement session a reference measurement 
+        with a continuous light signal to account for the differential non-linearity of the counting electronics. 
+        The recorded uncorrelated photons yield a reference histogram that is ideally constant. After recording of 
+        this measurement, the average number of photons in each time-bin is calculated. Next, the measurement was 
+        smoothed by a window function using a Hanning-filter with a window-size of 17 bins. The smoothed decay 
+        histogram was normalized to the previously calculated average number of photons. Instead of correcting the
+        experimental histogram the model function is multiplied by the smoothed and normalized reference histogram 
+        to preserve the Poissonian statistics of the measured fluorescence intensity histograms of interest.
     Setup part IDs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 Setup settings:
