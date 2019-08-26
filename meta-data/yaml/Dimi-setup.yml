@@ -1,0 +1,99 @@
+Sample:
+    Name: T4 Lysozyme S44pAcF I150C
+    Measurement ID: S44pAcF I150C +pep
+
+Calibration parameters:
+    Setup ID: Dimi-setup
+    Instrument response function:
+        Measurement ID: Water
+    Background:
+        Measurement ID: Buffer
+        Detectors:
+            Detector IDs: [4, 0]
+            Count rate [kHz]: 0.398
+            Detector IDs: [6, 2]
+            Count rate [kHz]: 0.407
+    Relative detection efficiencies:
+        0:
+            Name: gG/gR
+            Detector ID nominator: [0, 4]
+            Detector ID denominator: [2, 6]
+            Value: 0.385
+            #Measurement ID: DNAmix
+        1:
+            Name: gG_parallel/gG_perpendicular
+            Detector ID nominator: [0]
+            Detector ID denominator: [4]
+            Value: 1.07
+            Measurement ID: A488
+        2:
+            Name: gR_parallel/gR_perpendicular
+            Detector ID nominator: [2]
+            Detector ID denominator: [6]
+            Value: 0.97
+            Measurement ID: SRH
+
+Measurement datasets:
+    S44pAcF I150C +pep:
+        Setup ID: Dimi-setup
+        description: > 
+            PBS pH 7.5, 0.1 % Tween 20, 40 uM TROLOX, 1 uM inactive unlabeled protein (E11A mutation),
+            ~20 pM S44pAcF-Alexa488 I150C-Alexa647, 1 mg/mL peptidoglycan, 500 uL sample in Nunc chamber (Labtek).
+        Data:
+            Filepath: ./t4l_da_peptiincub/*.spc
+            Format: spc630  
+            # dimi spc630, big setup spc154, 8ch ht3-suren
+    Water:
+        Setup ID: Dimi-setup
+        description: > 
+            50 uL water on objective slide. This measurement is used as an Instrument response function.
+        Data:
+            Filepath: ./irf_blue/*.spc
+            Format: spc630 
+    Buffer:
+        Setup ID: Dimi-setup
+        description: > 
+            50 uL sample on objective slide, PBS pH 7.5, 0.1 % Tween 20, 40 uM TROLOX, 1 uM unlabeled protein, 
+            1 mg/mL peptidoglycan. This measurement is used to estimate the background.
+        Data:    
+            Filepath: ./buffer_peptidoglycan/*.spc
+            Format: spc630 
+    A488:
+        Setup ID: Dimi-setup
+        description: > 
+            50 uL water with Alexa488 at FCS concentration on objective slide, calibration measurement of free dye
+        Data:
+            Filepath: ./a488_fcs/*.spc
+            Format: spc630 
+    SRH:
+        Setup ID: Dimi-setup
+        description: >
+            50 uL water with Srh at FCS concentration on objective slide, calibration measurement of free dye
+        Data:    
+            Filepath: ./srh_fcs/*.spc
+            Format: spc630 
+
+Setup:
+# Minimal description
+    Dimi-setup:
+        Description: >
+            MFD for confocal single molecule Foerster Resonance Energy Transfer (smFRET) measurements was done using a 485 nm diode laser (LDH-D-C 485 PicoQuant, Germany, operating at 64 MHz, power at objective 110 uW)
+            exciting freely diffusing labeled T4L molecule that passed through a detection volume of the 60X, 1.2 NA collar (0.17) corrected Olympus objective. The emitted fluorescence signal was collected through the 
+            same objective and spatially filtered using a 100 um pinhole, to define an effective confocal detection volume. Then, the signal was divided into parallel and perpendicular components at two different colors 
+            ("green" and "red") through band pass filters, HQ 520/35 and HQ 720/150, for green and red respectively, and split further with 50/50 beam splitters. In total four photon-detectors are used- two for green 
+            (tau-SPAD, PicoQuant, Germany) and two for red channels (APD SPCM-AQR-14, Perkin Elmer, Germany). A time correlated single photon counting (TCSPC) module (Becker&Hickl, Germany) with a 1ps resolution 
+            in Time Tagged Time Resolved was used for data registration.
+            For smFRET measurements samples were diluted (buffer used 50 mM sodium phosphate, pH 7.5, 150 mM NaCl, 40 uM TROLOX and 1 uM unlabeled T4L) to pM concentration assuring ~ 1 burst per second. 
+            Collection time varied from several minutes up to 10 hours. To avoid drying out of the immersion water during the long measurements an oil immersion liquid with refraction index of water was used
+            (Immersol, Carl Zeiss Inc., Germany). NUNC chambers (Lab-Tek, Thermo Scientific, Germany) were used with 500 uL sample volume. Standard controls consisted of measuring water to determine the instrument
+            response function (IRF), buffer for background subtraction and the nM concentration green and red standard dyes (Rh110 and Rh101) in water solutions for calibration of green and red channels, respectively. 
+            To calibrate the detection efficiencies, we used a mixture solution of double labeled DNA oligonucleotides with known distance separation between donor and acceptor dyes. 
+        Detectors:
+            0:
+                Detector name: Green parallel
+            4:
+                Detector name: Green perpendicular
+            2:
+                Detector name: Red parallel
+            6:
+                Detector name: Red perpendicular
