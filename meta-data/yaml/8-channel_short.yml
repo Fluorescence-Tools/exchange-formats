@@ -1,0 +1,347 @@
+Sample:
+    Name: T4 Lysozyme S44pAcF I150C
+    Measurement ID: S44pAcF I150C
+
+Calibration parameters:
+    Setup ID: 8-channel
+    Instrument response function:
+        Measurement ID: Water
+    Background:
+        Measurement ID: Buffer
+        Detectors:
+            Detector IDs: [0, 1, 4, 5]
+            Count rate [kHz]: 2.213
+            Detector IDs: [2, 3, 6, 7]
+            Count rate [kHz]: 1.136
+    Relative detection efficiencies:
+        0:
+            Name: gG/gR
+            Detector ID nominator: [0, 1, 4, 5]
+            Detector ID denominator: [2, 3, 6, 7]
+            Value: 0.75
+            #Measurement ID: DNAmix
+        1:
+            Name: gG_parallel/gG_perpendicular
+            Detector ID nominator: [0, 4]
+            Detector ID denominator: [1, 5]
+            Value: 1.05
+            Measurement ID: Rhodamin 110
+        2:
+            Name: gR_parallel/gR_perpendicular
+            Detector ID nominator: [2, 6]
+            Detector ID denominator: [3, 7]
+            Value: 1.12
+            Measurement ID: Rhodamin 101
+
+Measurement datasets:
+    S44pAcF I150C:
+        Setup ID: 8-channel
+        description: > 
+            PBS pH 7.5, 0.1 % Tween 20, 40 uM TROLOX, 1 uM unlabeled protein,
+            ~20 pM S44pAcF-Alexa488 I150C-Alexa647, 500 uL sample in Nunc chamber (Labtek).
+        Data:
+            Filepath: ./T4L-44-150-DA-smd/*.ht3
+            Format: ht3-suren  
+            # dimi spc630, big setup spc154, 8ch ht3-suren
+    Water:
+        Setup ID: 8-channel
+        description: > 
+            50 uL water on objective slide. This measurement is used as an Instrument response function.
+        Data:
+            Filepath: ./IRF/*.ht3
+            Format: ht3-suren 
+    Buffer:
+        Setup ID: 8-channel
+        description: > 
+            50 uL sample on objective slide, PBS pH 7.5, 0.1 % Tween 20, 40 uM TROLOX, 1 uM unlabeled protein. 
+            This measurement is used to estimate the background.
+        Data:    
+            Filepath: ./Buffer/*.ht3
+            Format: ht3-suren 
+    Rhodamin 110:
+        Setup ID: 8-channel
+        description: > 
+            50 uL water with Rhodamine 110 at FCS concentration on objective slide, calibration measurement of free dye
+        Data:
+            Filepath: ./Rhod110/*.ht3
+            Format: ht3-suren 
+    Rhodamin 101:
+        Setup ID: 8-channel
+        description: >
+            50 uL water with Rhodamine 101 at FCS concentration on objective slide, calibration measurement of free dye
+        Data:    
+            Filepath: ./Rhod101/*.ht3
+            Format: ht3-suren 
+    #DNAmix:
+    #    Setup ID: 8-channel
+    #    description: > 
+    #        50 uL DNAmix diluted in water on objective slide, mixture of DNA strands with single-labeled strands, a donor-acceptor distance 
+    #        of 9 bp and of 15 bp. The donor fluorophore is Alexa488, the acceptor fluorophore Cy5. 
+    #    Data:    
+    #        Filepath: ./DNA/*.ht3
+    #        Format: ht3-suren 
+
+Setup parts:
+    Optical parts:
+        0:    
+            Name: Excitation polarizing beam splitter
+            Type: Polarizing beamsplitter
+            Description: >
+                Polarizer to cleanup the the polarization of the excitation source
+            Manufacturer: Thorlabs
+            Outputs:
+                Parallel: transmitted
+                Perpendicular: reflected
+        1:    
+            Name: Excitation dichroic
+            Type: Dichroic mirror
+            Description: >
+                Dichroic mirror used to excite the sample
+            Manufacturer: Chroma
+            Outputs: # The outputs can be simply names or numbers
+                Reflected: incoming laser light
+                Transmitted: red-shifted fluorescence emitted from sample
+        2:    
+            Name: Detection polarizing beam splitter
+            Type: Polarizing beamsplitter
+            Description: >
+                Polarizer to separate the parallel and perpendicular detection channels.
+            Manufacturer: Thorlabs
+            Outputs:
+                Parallel: None
+                Perpendicular: None
+        3:    
+            Name: Parallel dichroic mirror
+            Type: Dichroic mirror
+            Description: >
+                Dichroic mirror used separate green and red fluorescence
+            Manufacturer: Chroma
+            Inputs: parallel polarized emission
+            Outputs:
+                Reflected: green fluorescence
+                Transmitted: red fluorescence
+        4:    
+            Name: Perpendicular dichroic mirror
+            Type: Dichroic mirror
+            Description: >
+                Dichroic mirror used separate green and red fluorescence
+            Manufacturer: Chroma
+            Inputs: perpendicular polarized emission
+            Outputs:
+                Reflected: green fluorescence
+                Transmitted: green fluorescence
+        5:    
+            Name: beam splitter I
+            Type: 50/50 beam splitter
+            Description: >
+                50/50 beam splitter to split signal into two halves
+            Manufacturer: 
+            Inputs: parallel polarized green emission
+            Outputs:
+                Reflected: green fluorescent light
+                Transmitted: green fluorescent light
+        6:    
+            Name: beam splitter II
+            Type: 50/50 beam splitter
+            Description: >
+                50/50 beam splitter to split signal into two halves
+            Manufacturer: 
+            Inputs: parallel polarized red emission
+            Outputs:
+                Reflected: red fluorescent light
+                Transmitted: red fluorescent light
+        7:    
+            Name: beam splitter III
+            Type: 50/50 beam splitter
+            Description: >
+                50/50 beam splitter to split signal into two halves
+            Manufacturer: 
+            Inputs: perpendicular polarized green emission
+            Outputs:
+                Reflected: green fluorescent light
+                Transmitted: green fluorescent light
+        8:    
+            Name: beam splitter IV
+            Type: 50/50 beam splitter
+            Description: >
+                50/50 beam splitter to split signal into two halves
+            Manufacturer: 
+            Inputs: perpendicular polarized red emission
+            Outputs:
+                Reflected: red fluorescent light
+                Transmitted: red fluorescent light
+        9:
+            Name: ET520/32
+            Type: Filter
+            Description: Filter used in front of green detectors
+            Manufacturer: Chroma
+            Outputs:
+                Transmitted: 
+                    Center wavelength: 520
+                    Bandwidth: 32
+        10:    
+            Name: ET720/150
+            Type: Filter
+            Description: Filter used in front of red detectors
+            Manufacturer: Chroma
+            Outputs:
+                Transmitted:
+                    Center wavelength: 720
+                    Bandwidth: 150
+
+    Excitation sources:
+        0: # 8-channel green
+            Excitation source manufacturer: PicoQuant, Germany
+            Excitation source name: BDL-SMN 485 nm
+            Excitation source wavelength: 485 nm
+        1: # 8-channel red for PIE
+            Excitation source manufacturer: PicoQuant, Germany
+            Excitation source name: BDL-SMN 640 nm
+            Excitation source wavelength: 640 nm
+
+    Counting electronics:
+        0: # 8-channel
+            Counting electronics manufacturer: PicoQuant, Germany
+            Counting electronics name: HydraHarp
+            Counting electronics channel width: 0.008
+            Counting electronics UUID: da6e0769-8f3e-40d1-9d0f-bd2b5aeb1383
+
+    Detectors:
+        0: # 8-channel
+            Part type: APD detector
+            Part manufacturer: Perkin Elmer
+            Part manufacturer date: null        
+            Part name: SPCM AQR 14
+            Part serial number: 9953
+        1: # 8-channel
+            Part type: APD detector
+            Part manufacturer: Perkin Elmer
+            Part manufacturer date: null        
+            Part name: SPCM AQR 14
+            Part serial number: null
+        2: # 8-channel
+            Part type: APD Detector
+            Part manufacturer: Perkin Elmer
+            Part manufacturer date: null        
+            Part name: SPCM CD 2965
+            Part serial number: 5257-2
+        3: # 8-channel
+            Part type: Detector
+            Detector manufacturer: Perkin Elmer
+            Detector manufacturer date: null        
+            Detector name: SPCM AQR 15
+            Detector serial number: 15130
+            Detector type: APD
+        4: # 8-channel
+            Part type: Detector
+            Detector manufacturer: PicoQuant, Germany
+            Detector manufacturer date: July 2011        
+            Detector name: tauSPAD
+            Detector serial number: 01016062
+            Detector type: APD
+        5: # 8-channel
+            Part type: Detector
+            Detector manufacturer: PicoQuant, Germany
+            Detector manufacturer date: July 2011        
+            Detector name: tauSPAD
+            Detector serial number: 01016061
+            Detector type: APD
+        6: # 8-channel
+            Part type: Detector
+            Detector manufacturer: PicoQuant, Germany
+            Detector manufacturer date: null
+            Detector name: tauSPAD
+            Detector serial number: 01019818
+            Detector type: APD
+        7: # 8-channel
+            Part type: Detector
+            Detector manufacturer: PicoQuant, Germany
+            Detector manufacturer date: February 2012
+            Detector name: tauSPAD
+            Detector serial number: 01017532
+            Detector type: APD
+
+Setups:
+# Minimal description
+    8-channel setup:
+        Description: >
+            MFD for confocal single molecule Foerster Resonance Energy Transfer (smFRET) measurements was done using a 485 nm diode laser (LDH-D-C 485 PicoQuant, Germany, operating at 64 MHz, power at objective 110 uW)
+            exciting freely diffusing labeled T4L molecule that passed through a detection volume of the 60X, 1.2 NA collar (0.17) corrected Olympus objective. The emitted fluorescence signal was collected through the 
+            same objective and spatially filtered using a 100 um pinhole, to define an effective confocal detection volume. Then, the signal was divided into parallel and perpendicular components at two different colors 
+            ("green" and "red") through band pass filters, HQ 520/35 and HQ 720/150, for green and red respectively, and split further with 50/50 beam splitters. In total eight photon-detectors are used- four for green 
+            (tau-SPAD, PicoQuant, Germany) and four for red channels (APD SPCM-AQR-14, Perkin Elmer, Germany). A time correlated single photon counting (TCSPC) module (HydraHarp 400, PicoQuant, Germany) with a 1ps resolution 
+            in Time Tagged Time Resolved was used for data registration.
+            For smFRET measurements samples were diluted (buffer used 50 mM sodium phosphate, pH 7.5, 150 mM NaCl, 40 uM TROLOX and 1 uM unlabeled T4L) to pM concentration assuring ~ 1 burst per second. 
+            Collection time varied from several minutes up to 10 hours. To avoid drying out of the immersion water during the long measurements an oil immersion liquid with refraction index of water was used
+            (Immersol, Carl Zeiss Inc., Germany). NUNC chambers (Lab-Tek, Thermo Scientific, Germany) were used with 500 uL sample volume. Standard controls consisted of measuring water to determine the instrument
+            response function (IRF), buffer for background subtraction and the nM concentration green and red standard dyes (Rh110 and Rh101) in water solutions for calibration of green and red channels, respectively. 
+            To calibrate the detection efficiencies, we used a mixture solution of double labeled DNA oligonucleotides with known distance separation between donor and acceptor dyes. 
+
+# Extended description
+    8-channel setup:
+        Excitation sources: [3]
+        Excitation source name: BDL-SMN 485 nm
+        Excitation source repetition rate: 64 MHz
+        Counting electronics ID: [2]
+        Counting electronics name: Picoquant Hydroharp 400
+        Resolution [ps]: 4
+        Detectors:
+            0:
+                Detector name: Green parallel
+                Detector ID: 4
+            1:
+                Detector name: Green perpendicular
+                Detector ID: 5
+            2:
+                Detector name: Red parallel
+                Detector ID: 0
+            3:
+                Detector name: Red perpendicular
+                Detector ID: 1
+            4:
+                Detector name: Green parallel
+                Detector ID: 6
+            5:
+                Detector name: Green perpendicular
+                Detector ID: 7
+            6:
+                Detector name: Red parallel
+                Detector ID: 2
+            7:
+                Detector name: Red perpendicular
+                Detector ID: 3
+
+    8-channel setup PIE:
+        Excitation sources: [3,4]
+        Excitation source name: BDL-SMN 485 nm, BDL-SMN 640nm
+        Excitation source repetition rate: 32 MHz
+        Counting electronics ID: [2]
+        Counting electronics name: Picoquant Hydroharp 400
+        Resolution [ps]: 4
+        Detectors:
+            0:
+                Detector name: Green parallel
+                Detector ID: 4
+            1:
+                Detector name: Green perpendicular
+                Detector ID: 5
+                Excitation Light path: >
+            2:
+                Detector name: Red parallel
+                Detector ID: 0
+            3:
+                Detector name: Red perpendicular
+                Detector ID: 1
+                Excitation Light path: >
+            4:
+                Detector name: Green parallel
+                Detector ID: 6
+            5:
+                Detector name: Green perpendicular
+                Detector ID: 7
+            6:
+                Detector name: Red parallel
+                Detector ID: 2
+            7:
+                Detector name: Red perpendicular
+                Detector ID: 3
