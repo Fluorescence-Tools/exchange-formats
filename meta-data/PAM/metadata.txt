@@ -1,0 +1,51 @@
+Filename:	2species_different_gamma_gr-br_1.sim
+Recording date:	15-Mar-2017 16:24:25
+User:		User
+Comment:	This is a test
+
+Sample:		Test Sample
+Buffer:		Sample Buffer
+Exc.Wav.:	532, 647
+Exc.Pow.[muW]:	100, 100
+Dyes:		Atto532, Atto647N
+Meas. Dur.:	1200.00 s
+
+Detector Information
+Name:           Det# Rout# Filter Pol  BS
+B p             1    1     500/25 none none
+G p             2    1     500/25 none none
+R p             3    1     500/25 none none
+IR p            4    1     500/25 none none
+B s             5    1     500/25 none none
+G s             6    1     500/25 none none
+R s             7    1     500/25 none none
+IR s            8    1     500/25 none none
+Det: 1, Rout: 2 1    2     500/50 none none
+Det: 1, Rout: 3 1    3     500/50 none none
+
+Profile name:	Sim_General
+
+PIE Channel Information
+Name:                   Det# Rout# From To   Background [kHz]
+BB1                     1    1     1    2000 0.00
+BB2                     5    1     1    626  0.00
+BG1                     2    1     1    2000 0.00
+BG2                     6    1     1    626  0.00
+BR1                     3    1     1    626  0.00
+BR2                     7    1     1    626  0.00
+BIR1                    4    1     1    626  0.00
+BIR2                    8    1     1    626  0.00
+GG1                     2    1     2050 626  0.00
+GG2                     6    1     2050 626  0.00
+GR1                     3    1     2073 626  0.00
+GR2                     7    1     2062 626  0.00
+RR1                     3    1     4097 626  0.00
+RR2                     7    1     4118 626  0.00
+Comb.: BB1+BB2          0    0     0    0    0.00
+Comb.: BG1+BG2          0    0     0    0    0.00
+BB                      1    1     1    626  0.00
+BG                      2    1     1    626  0.00
+GG                      2    1     15000626  0.00
+noise                   1    1     20000626  0.00
+Comb.: BB1+BB2+BG1+BG2  0    0     0    0    0.00
+Comb.: BB1+BG1          0    0     0    0    0.00
