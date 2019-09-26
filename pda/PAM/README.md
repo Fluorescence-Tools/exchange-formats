@@ -23,3 +23,5 @@ The timebin specifies the binning used for processing the burst-wise dataset for
 The next line specifies the channel names. `NXY` denotes the number of photon in spectral channel Y after excitation by laser X.
 
 The experimental data is listed as columns, separated by commas.
+
+See also: https://pam.readthedocs.io/en/latest/tcPDA.html#from-text-file.
