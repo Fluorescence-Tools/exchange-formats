@@ -9,9 +9,11 @@
 ### Required metadata
 
 * Time bin used to bin the data
+
 ### Optional data
 
 * Photon counts in PIE/ALEX channels (acceptor signal after acceptor excitation)
+* Reference to Photon IDs (selection) if a selection was used
 
   
 ### Optional metadata

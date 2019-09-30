@@ -1,0 +1,70 @@
+{
+    "parameter": {
+        "N": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.0053492912856229341, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "N", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": 0.3472908287406257
+        }, 
+        "b": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.0025833261416635619, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "b", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": 1.0010602464071245
+        }, 
+        "ba": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.28120805626404755, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "ba", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": -1.3379052223413117
+        }, 
+        "bt": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.0054460075748329817, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "bt", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": 0.05185073053965357
+        }, 
+        "s": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.015115384694878786, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "s", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": 0.08550409890389828
+        }, 
+        "td": {
+            "bounds_on": false, 
+            "decimals": 3, 
+            "error_estimate": 0.15488937004321759, 
+            "fixed": false, 
+            "lb": -Infinity, 
+            "name": "td", 
+            "type": "fit", 
+            "ub": Infinity, 
+            "value": 1.499234545887434
+        }
+    }
+}

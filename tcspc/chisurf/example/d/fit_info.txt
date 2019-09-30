@@ -1,0 +1,53 @@
+
+Fitting:
+Dataset:
+--------
+Dataset:
+filename: Z:\development\fluorescence-tools\chisurf\sample_data\tcspc\ibh_sample\Decay_577D.txt
+length  : 4096
+x	y	error-x	error-y
+1.410e-02   	0.000e+00   	0.000e+00   	1.000e-15   	
+2.820e-02   	0.000e+00   	0.000e+00   	1.000e-15   	
+....
+5.773e+01   	0.000e+00   	0.000e+00   	1.000e-15   	
+
+
+Fit-result: 
+----------
+fitrange: 104..3082
+chi2:	1.0558 
+----------
+Model: Lifetime fit
+Parameter	Value	Bounds	Fixed	Linked
+b_1	3.8000e-01	(None, None)	False	False
+bg	7.4196e+00	(None, None)	False	False
+dt	1.4100e-02	(None, None)	True	False
+g	1.0000e+00	(None, None)	True	False
+l1	3.0800e-02	(None, None)	True	False
+l2	3.6800e-02	(None, None)	True	False
+lb	8.2073e-01	(None, None)	False	False
+n0	4.1636e+06	(None, None)	False	False
+r0	3.8000e-01	(None, None)	True	False
+rep	1.0000e+01	(None, None)	True	False
+rho_1	1.5000e+00	(None, None)	False	False
+sc	-9.8462e-03	(None, None)	False	False
+start	0.0000e+00	(None, None)	True	False
+stop	5.7754e+01	(None, None)	True	False
+tBg	1.0000e+00	(None, None)	True	False
+tDead	8.5000e+01	(None, None)	True	False
+tL1	4.2579e+00	(None, None)	False	False
+tL2	2.4238e+00	(None, None)	False	False
+tMeas	1.0000e+00	(None, None)	True	False
+ts	8.2130e-01	(None, None)	False	False
+win-size	1.7000e+01	(None, None)	True	False
+xL1	9.1519e-01	(None, None)	False	False
+xL2	8.4806e-02	(None, None)	False	False
+
+------------------
+
+Average Lifetimes:
+<tau>x: 4.102
+<tau>F: 4.166
+
+------------------
+---
