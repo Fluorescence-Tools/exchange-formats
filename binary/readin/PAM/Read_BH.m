@@ -3,7 +3,7 @@ function [MT, MI, Header] = Read_BH(FileName,NoE,Card)
 %%% Input parameters:
 %%% Filename: Full filename
 %%% NoE: Maximal number of entries to load
-%%% Mark: defines, which marks to use; [Pixel Line Frame];
+%%% Card: defines, which marks to use; [Pixel Line Frame];
 
 %%% Output parameters:
 %%% ClockRate: the macrotime clock. For SPC-140/150/830/130, the Becker and 
