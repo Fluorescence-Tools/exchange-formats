@@ -1,0 +1,27 @@
+
+Fitting:
+Dataset:
+--------
+filename: Z:\development\fluorescence-tools\chisurf\sample_data\fcs\Kristine\Kristine_with_error.cor
+length  : 207
+x	y	error-x	error-y
+1.360e-05   	4.216e+00   	0.000e+00   	1.000e+00   	
+2.719e-05   	3.877e+00   	0.000e+00   	1.000e+00   	
+....
+2.965e+03   	1.005e+00   	0.000e+00   	1.000e+00   	
+
+
+Fit-result: 
+----------
+fitrange: 4..192
+chi2:	1.3504 
+----------
+Model: Parse-Model
+Parameter	Value	Bounds	Fixed	Linked
+N	3.4729e-01	(None, None)	False	False
+b	1.0011e+00	(None, None)	False	False
+ba	-1.3379e+00	(None, None)	False	False
+bt	5.1851e-02	(None, None)	False	False
+s	8.5504e-02	(None, None)	False	False
+td	1.4992e+00	(None, None)	False	False
+---

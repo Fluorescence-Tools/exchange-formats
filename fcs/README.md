@@ -6,6 +6,7 @@
 
 * Time axis
 * Correlation data
+* Noise/correlation channel weights or measurement time and average count rate
 
 ### Required metadata
 
@@ -18,10 +19,10 @@
   
 ### Optional metadata
 
-* Auto- or cross-correlation function?
+* Auto- or cross-correlation function? (Mention correlation channels)
 * Type of time axis: linear, logarithmic, multiple-tau, ...
-* Channel count rate (for brightness calculation)
-* Determination of error bars
+* Channel count rate (for brightness calculation) (Should be mandatory, otherwise error weighting hard)
+* Determination of error bars (If the weights were calculate provide the function)
 * Channel description
 * Raw data file name
 * Correlation algorithm used
