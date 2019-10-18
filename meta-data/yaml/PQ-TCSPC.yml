@@ -4,7 +4,7 @@ Sample:
 
 Measurement datasets:
     R8pAcF Q69C-DA:
-        Setup ID: PQ TCSPC
+        Setup ID: pq TCSPC
         Instrument response function:
             Measurement ID: IRF_DA
         Description: >
@@ -13,7 +13,7 @@ Measurement datasets:
             Filename: ./8-69_DA.dat
 
     R8AcF Q69C Donor:
-        Setup ID: PQ TCSPC
+        Setup ID: pq TCSPC
         Instrument response function:
             Measurement ID: IRF_D0
         Description: >
@@ -22,14 +22,14 @@ Measurement datasets:
             Filename: ./8-69_D0.dat
 
     IRF-DA:
-        Setup ID: PQ TCSPC
+        Setup ID: pq TCSPC
         Description: >
             500 uL of Ludox diluted in water to gain a scattering solution.
         Data:
             Filename: ./IRF_DA.dat
 
     IRF-D0:
-        Setup ID: PQ TCSPC
+        Setup ID: pq TCSPC
         description: >
             500 uL of Ludox diluted in water to gain a scattering solution.
         Data:
@@ -37,7 +37,7 @@ Measurement datasets:
 
 Setup parts:
 
-    0: # PQ Fluotime200
+    0: # pq Fluotime200
         Excitation source manufacturer: NKT Photonics
         Excitation source name: SuperK extreme
         Excitation source repetition rate: 20 MHz
@@ -48,16 +48,16 @@ Setup parts:
         Type: polarizer
         Description: >
             Polarizer to cleanup and define the the polarization of the excitation source
-        Manufacturer: PQ
+        Manufacturer: pq
     2:
         Name: OD filter
         Type: Filter
-        Manufacturer: PQ
+        Manufacturer: pq
         Description: Filter used to attenuate exitation signal
     3:
         Name: OD filter
         Type: Filter
-        Manufacturer: PQ
+        Manufacturer: pq
         Description: Filter used to attenuate emission signal
     4:
         Name: FGL495
@@ -69,12 +69,12 @@ Setup parts:
         Type: polarizer
         Description: >
             Polarizer to select the polarization of the emitted signal
-        Manufacturer: PQ
+        Manufacturer: pq
     6:
         Name: DETECTION_MONO.MCR
         Type: Monochromator
         Description: Monochromator used in front of detector
-        Manufacturer: PQ
+        Manufacturer: pq
 
     7:
         Part type: Hybrid detector
@@ -92,7 +92,7 @@ Setup parts:
 # In the setup section, the actual used setup is assembled. 
 
 Setup:
-    Setup name: PQ TCSPC
+    Setup name: pq TCSPC
     Description: >
         Ensemble Time Correlated Single Photon Counting (eTCSPC) measurements were performed using either 
         an IBH-5000U (IBH, Scotland) or a Fluotime 200 (Picoquant, Germany) system. 
@@ -122,7 +122,7 @@ Setup:
 
 Setup settings:
     0: &PQTCSPC
-        Setup name: PQ TCSPC
+        Setup name: pq TCSPC
         Counting electronics:
             Setup part ID: [8]
             Resolution [ps]: 8

@@ -8,10 +8,10 @@ import tttrlib
 import numpy as np
 import pylab as p
 
-#data = tttrlib.TTTR("../../../examples/BH/m000.spc", 'SPC-130')
-data = tttrlib.TTTR('./examples/BH/BH_SPC132.spc', 'SPC-130')
-#data = tttrlib.TTTR("../../../examples/PQ/HT3/1a_1b_Mix.ht3", 'HT3')
-#data = tttrlib.TTTR('../../examples/PQ/PTU/PQ_PTU_HH_T3.ptu', 'PTU')
+#data = tttrlib.TTTR("../../../examples/bh/m000.spc", 'SPC-130')
+data = tttrlib.TTTR('./examples/bh/BH_SPC132.spc', 'SPC-130')
+#data = tttrlib.TTTR("../../../examples/pq/HT3/1a_1b_Mix.ht3", 'HT3')
+#data = tttrlib.TTTR('../../examples/pq/PTU/PQ_PTU_HH_T3.ptu', 'PTU')
 
 # make a cross-correlation between the two green channels (ch 0, ch 8)
 ch1_indeces = data.get_selection_by_channel(np.array([0]))
@@ -51,7 +51,7 @@ import numpy as np
 import pylab as p
 
 
-data = tttrlib.TTTR('../../examples/BH/BH_SPC132.spc', 'SPC-130')
+data = tttrlib.TTTR('../../examples/bh/BH_SPC132.spc', 'SPC-130')
 
 # make a cross-correlation between the two green channels (ch 0, ch 8)
 ch1_indeces = data.get_selection_by_channel(np.array([0]))
@@ -108,7 +108,7 @@ import tttrlib
 import numpy as np
 import pylab as p
 
-photons = tttrlib.TTTR('../../examples/BH/BH_SPC132.spc', 2)
+photons = tttrlib.TTTR('../../examples/bh/BH_SPC132.spc', 2)
 mt = photons.macro_times
 
 tws = tttrlib.get_ranges_time_window(mt, 1000000, -1, 400, -1)

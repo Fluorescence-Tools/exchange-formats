@@ -5,7 +5,7 @@
 import tttrlib
 import numpy as np
 
-data = tttrlib.TTTR('../../examples/PQ/PTU/PQ_PTU_HH_T3.ptu', 'PTU')
+data = tttrlib.TTTR('../../examples/pq/PTU/PQ_PTU_HH_T3.ptu', 'PTU')
 data.get_macro_time()
 
 ch1_indeces = data.get_selection_by_channel(np.array([0]))

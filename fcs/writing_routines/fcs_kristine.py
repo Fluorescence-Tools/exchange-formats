@@ -1,4 +1,4 @@
-from __future__ import typing
+from __future__ import typeing
 import numpy as np
 
 

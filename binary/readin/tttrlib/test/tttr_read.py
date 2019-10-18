@@ -15,29 +15,29 @@ import pylab as p
 plot_output = True
 
 # Load different file types
-# 0 = PQ-PTU
-# 1 = PQ-HT3
-# 2 = BH-Spc132
-# 3 = BH-Spc600_256
-# 4 = BH-Spc600_4096 (I don't have a sample file)
+# 0 = pq-PTU
+# 1 = pq-HT3
+# 2 = bh-Spc132
+# 3 = bh-Spc600_256
+# 4 = bh-Spc600_4096 (I don't have a sample file)
 # 5 = Photon-HDF5
 
 
-ptu = tttrlib.TTTR('../../examples/PQ/PTU/PQ_PTU_HH_T3.ptu', 0)
-ht3 = tttrlib.TTTR('../../examples/PQ/HT3/PQ_HT3_CLSM.ht3', 1)
-spc132 = tttrlib.TTTR('../../examples/BH/BH_SPC132.spc', 2)
-spc600_256 = tttrlib.TTTR('../../examples/BH/BH_SPC630_256.spc', 3)
+ptu = tttrlib.TTTR('../../examples/pq/PTU/PQ_PTU_HH_T3.ptu', 0)
+ht3 = tttrlib.TTTR('../../examples/pq/HT3/PQ_HT3_CLSM.ht3', 1)
+spc132 = tttrlib.TTTR('../../examples/bh/BH_SPC132.spc', 2)
+spc600_256 = tttrlib.TTTR('../../examples/bh/BH_SPC630_256.spc', 3)
 photon_hdf5 = tttrlib.TTTR('../../examples/HDF/1a_1b_Mix.hdf5', 5)
 
 # Compare speed to phconvert
 n_test_runs = 10
 time_phconvert = timeit.timeit(
-    'phconvert.pqreader.load_ht3("../../examples/PQ/HT3/1a_1b_Mix.ht3", ovcfunc=None)',
+    'phconvert.pqreader.load_ht3("../../examples/pq/HT3/1a_1b_Mix.ht3", ovcfunc=None)',
     number=n_test_runs,
     setup="from __main__ import phconvert"
 )
 time_tttrlib = timeit.timeit(
-    'tttrlib.TTTR("../../../examples/PQ/HT3/1a_1b_Mix.ht3", 1)',
+    'tttrlib.TTTR("../../../examples/pq/HT3/1a_1b_Mix.ht3", 1)',
     number=n_test_runs,
     setup="from __main__ import tttrlib"
 )
