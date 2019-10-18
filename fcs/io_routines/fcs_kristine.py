@@ -1,4 +1,5 @@
-from __future__ import typeing
+from __future__ import annotations
+from typing import Dict
 import numpy as np
 
 
@@ -56,3 +57,39 @@ def save_fcs_kristine(
         data,
     )
 
+
+def read_fcs_kristine(
+        filename: str,
+        verbose: bool
+) -> Dict:
+    """
+
+    :param filename:
+    :param verbose:
+    :return:
+    """
+    data = np.loadtxt(
+        filename
+    )
+
+    # In Kristine file-type
+    x, y = data[0], data[1]
+    i = np.where(x > 0.0)
+    x = x[i]
+    y = y[i]
+    dur, cr = data[2, 0], data[2, 1]
+
+    # First try to use experimental errors
+    try:
+        w = 1. / data[3][i]
+    except IndexError:
+        # In case everything fails
+        # Use no errors at all but uniform weighting
+        w = np.ones_like(y)
+    return {
+        'correlation_time': x,
+        'correlation_amplitude': y,
+        'weights': w,
+        'acquisition_time': dur,
+        'mean_count_rate': cr
+    }
