@@ -29,7 +29,7 @@ def fcs_write_kristine(
     :return:
     """
     if verbose:
-        print("Saving correlation: %s" % filename)
+        print("Writing Kristine .cor to file: ", filename)
     col_1 = np.array(correlation_time)
     col_2 = np.array(correlation_amplitude)
     col_3 = np.zeros_like(correlation_amplitude)
@@ -92,6 +92,9 @@ def fcs_read_kristine(
     :param verbose:
     :return:
     """
+    if verbose:
+        print("Reading Kristine .cor from file: ", filename)
+
     data = np.loadtxt(
         filename
     ).T

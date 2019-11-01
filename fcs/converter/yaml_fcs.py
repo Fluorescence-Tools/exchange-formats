@@ -24,6 +24,8 @@ def fcs_write_yaml(
     :param verbose:
     :return:
     """
+    if verbose:
+        print("Writing FCS-YAML to file: ", filename)
     with open(filename, 'w') as fp:
         yaml.dump(
             data=d,
@@ -42,6 +44,8 @@ def fcs_read_yaml(
     :param verbose:
     :return:
     """
+    if verbose:
+        print("Reading FCS-YAML from file: ", filename)
     d = [{}]
     with open(filename, 'r') as fp:
         d = yaml.safe_load(

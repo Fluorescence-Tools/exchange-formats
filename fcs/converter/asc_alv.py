@@ -2,14 +2,13 @@
 from __future__ import annotations
 from typing import Dict, List
 
-import csv
+
+import os
 import pathlib
 import warnings
-
-#import chisurf.fluorescence.fcs
-import weights
-
 import numpy as np
+import csv
+import weights
 
 
 avl_to_yaml = {
@@ -70,8 +69,11 @@ def fcs_read_asc_header(
 
 
 def fcs_read_asc(
-        filename: str
+        filename: str,
+        verbose: bool = False
 ) -> List[Dict]:
+    if verbose:
+        print("Reading ALV .asc from file: ", filename)
     d = openASC(filename)
     correlations = list()
 

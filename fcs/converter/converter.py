@@ -6,6 +6,7 @@ import yaml_fcs
 import mat_china
 import cor_kristine
 import asc_alv
+import fcs_confocor3
 
 
 if __name__ == "__main__":
@@ -22,7 +23,7 @@ if __name__ == "__main__":
              'asc (ALV Correlator), '
              'cor (Kristine file format), '
              'china-mat (Chinese FCS), '
-             'fcs (Zeiss Confocor)'
+             'confocor3 (Zeiss Confocor)'
     )
 
     parser.add_argument(
@@ -31,6 +32,14 @@ if __name__ == "__main__":
         type=str,
         default='yaml',
         help='Either cor for Kristine yaml for yaml-FCS'
+    )
+
+    parser.add_argument(
+        '-v',
+        '--verbose',
+        type=bool,
+        default=False,
+        help='Conversion prints additional information if True.'
     )
 
     parser.add_argument(
@@ -46,28 +55,44 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print(args)
+    verbose = args.verbose
 
+    print("")
     print("Convert FCS curves")
     print("==================")
-    print("\tInput filename: %s" % args.input_filename)
-    print("\tInput type: %s" % args.input_type)
-    print("\tOutput filename: %s" % args.output_filename)
-    print("\tOutput type: %s" % args.output_type)
+    print("Input filename: %s" % args.input_filename)
+    print("Input type: %s" % args.input_type)
+    print("Output filename: %s" % args.output_filename)
+    print("Output type: %s" % args.output_type)
+    print("-------------------")
+    print("")
 
     input_filename = args.input_filename
     input_type = args.input_type
     if input_type.lower() == 'alv':
-        d = asc_alv.fcs_read_asc(input_filename)
+        d = asc_alv.fcs_read_asc(
+            input_filename,
+            verbose=verbose
+        )
     elif input_type.lower() == 'cor':
         d = cor_kristine.fcs_read_kristine(
-            input_filename
+            input_filename,
+            verbose=verbose
         )
     elif input_type.lower() == 'china-mat':
-        d = mat_china.fcs_read_china_mat(input_filename)
+        d = mat_china.fcs_read_china_mat(
+            input_filename,
+            verbose=verbose
+        )
+    elif input_type.lower() == 'confocor3':
+        d = fcs_confocor3.fcs_read_zeiss_fcs(
+            input_filename,
+            verbose=verbose
+        )
     else: #elif args.input_type.lower() == 'yaml':
         d = yaml_fcs.fcs_read_yaml(
-            input_filename
+            input_filename,
+            verbose=verbose
         )
 
     output_filename = args.output_filename

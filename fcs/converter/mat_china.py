@@ -3,8 +3,22 @@ from typing import Dict, List
 
 import scipy.io
 import numpy as np
-
 import weights
+
+
+def fcs_write_china_mat(
+        filename: str,
+        d: List[Dict],
+        verbose: bool = False
+) -> None:
+    if verbose:
+        print("Writing to file: %s" % filename)
+    mdict = dict()
+
+    scipy.io.savemat(
+        file_name=filename,
+        mdict=mdict
+    )
 
 
 def fcs_read_china_mat(
@@ -15,7 +29,7 @@ def fcs_read_china_mat(
     n_measurements = m['AA'].shape[1]
     # save intensity traces
     if verbose:
-        print("Opening file: %s" % filename)
+        print("Reading from file: %s" % filename)
 
     correlation_keys = {
         'Auto_AA': {
@@ -68,8 +82,8 @@ def fcs_read_china_mat(
                     'weights': w.tolist(),
                     'acquisition_time': float(aquisition_time),
                     'mean_count_rate': float(mean_count_rate),
-                    'intensity_trace_time': intensity_time.tolist(),
-                    'intensity_trace': intensity.tolist(),
+                    'intensity_trace_time_ch1': intensity_time.tolist(),
+                    'intensity_trace_ch1': intensity.tolist(),
                 }
             )
     return correlations
