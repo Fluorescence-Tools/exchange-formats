@@ -1,9 +1,12 @@
 from __future__ import annotations
-from typing import Dict
+from typing import Dict, List
 import numpy as np
+import os
+
+import weights
 
 
-def save_fcs_kristine(
+def fcs_write_kristine(
         filename: str,
         correlation_amplitude: np.ndarray,
         correlation_time: np.ndarray,
@@ -58,10 +61,31 @@ def save_fcs_kristine(
     )
 
 
-def read_fcs_kristine(
+def fcs_write_dict_to_kristine(
         filename: str,
-        verbose: bool
-) -> Dict:
+        ds: List[Dict],
+        verbose: bool = True
+) -> None:
+    for i, d in enumerate(ds):
+        root, ext = os.path.splitext(
+            filename
+        )
+        fn = root + ("_%02d_" % i) + ext
+        fcs_write_kristine(
+            filename=fn,
+            verbose=verbose,
+            correlation_time=d['correlation_time'],
+            correlation_amplitude=d['correlation_amplitude'],
+            correlation_amplitude_uncertainty=1. / np.array(d['weights']),
+            acquisition_time=d['acquisition_time'],
+            mean_countrate=d['mean_count_rate']
+        )
+
+
+def fcs_read_kristine(
+        filename: str,
+        verbose: bool = False
+) -> List[Dict]:
     """
 
     :param filename:
@@ -70,7 +94,7 @@ def read_fcs_kristine(
     """
     data = np.loadtxt(
         filename
-    )
+    ).T
 
     # In Kristine file-type
     x, y = data[0], data[1]
@@ -85,11 +109,15 @@ def read_fcs_kristine(
     except IndexError:
         # In case everything fails
         # Use no errors at all but uniform weighting
-        w = np.ones_like(y)
-    return {
-        'correlation_time': x,
-        'correlation_amplitude': y,
-        'weights': w,
-        'acquisition_time': dur,
-        'mean_count_rate': cr
-    }
+        w = weights.weights(x, y, dur, cr)
+    return [
+        {
+            'filename': filename,
+            'correlation_time': x.tolist(),
+            'correlation_amplitude': y.tolist(),
+            'weights': w.tolist(),
+            'acquisition_time': float(dur),
+            'mean_count_rate': float(cr),
+            'intensity_trace': None
+        }
+    ]
