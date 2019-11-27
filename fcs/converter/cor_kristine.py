@@ -3,7 +3,7 @@ from typing import Dict, List
 import numpy as np
 import os
 
-import weights
+from . import weights
 
 
 def fcs_write_kristine(

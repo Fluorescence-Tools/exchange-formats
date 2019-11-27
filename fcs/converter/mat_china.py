@@ -3,7 +3,7 @@ from typing import Dict, List
 
 import scipy.io
 import numpy as np
-import weights
+from . import weights
 
 
 def fcs_write_china_mat(

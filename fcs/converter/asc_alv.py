@@ -8,7 +8,7 @@ import pathlib
 import warnings
 import numpy as np
 import csv
-import weights
+from . import weights
 
 
 avl_to_yaml = {
